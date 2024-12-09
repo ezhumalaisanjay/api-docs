@@ -46,3 +46,4 @@ Send a JSON payload with the following fields:
   "organization_id": "12345",
   "admin_email": "admin@example.com"
 }
+```
