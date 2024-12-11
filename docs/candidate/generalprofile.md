@@ -1,6 +1,6 @@
 # General Profile
 
-## General Profile Update API Documentation
+## API Documentation
 
 ### Endpoint  
 **URL**:  
@@ -48,31 +48,90 @@ The request body must be a JSON object containing the following fields:
 
 ---
 
-### Example Request Body
+### Request
 ```json
 {
     "category": "general-profile",
-    "timestamp": "2024-12-10T14:30:00Z",
-    "Professions": ["Doctor", "Nurse"],
-    "Specialtiess": ["Pediatrics", "Cardiology"],
-    "SpecificOptions": ["Option1", "Option2"],
-    "addressLine1": "123 Main Street",
-    "addressLine2": "Apt 4B",
-    "chartingsystem": "SystemX",
-    "city": "New York",
-    "country": "USA",
-    "dateofbirth": "1990-01-01",
-    "email": "example@example.com",
-    "emr": "EMRSystem",
+    "timestamp": "2024-12-10T00:00:00.000000",
+    "Professions": "ProfessionExample",
+    "Specialtiess": "SpecialtyExample",
+    "SpecificOptions": "SpecificOptionExample",
+    "addressLine1": "123 Main St",
+    "addressLine2": "Apt 456",
+    "chartingsystem": [
+        "ExampleSystem"
+    ],
+    "city": "SampleCity",
+    "country": "US",
+    "dateofbirth": "01 Jan 1990",
+    "email": "dummy@example.com",
+    "emr": [
+        "ExampleEMR"
+    ],
     "firstName": "John",
     "lastName": "Doe",
-    "middleName": "A",
-    "phone": "1234567890",
-    "shifts": ["Morning", "Evening"],
-    "ssn": "123-45-6789",
-    "state_general": "NY",
-    "state_gen": "New York State",
-    "timetocontact": "9AM - 5PM",
-    "typeofemployment": "Full-time",
-    "zipCode": "10001"
+    "middleName": "M",
+    "phone": "+10000000000",
+    "shifts": [
+        "Days"
+    ],
+    "ssn": "1234",
+    "state_general": "SampleState",
+    "state_gen": "SampleState",
+    "timetocontact": [
+        "Morning"
+    ],
+    "typeofemployment": [
+        "Temporary"
+    ],
+    "zipCode": "12345"
 }
+
+
+```
+
+### Response
+
+```json
+{
+  "statusCode": 200,
+  "body": "Item updated successfully",
+  "updateResponse": {
+    "ResponseMetadata": {
+      "RequestId": "ODMC6FKTVG0G85QD178AT7SP8NVV4KQNSO5AEMVJF66Q9ASUAAJG",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "server": "Server",
+        "date": "Wed, 11 Dec 2024 06:02:24 GMT",
+        "content-type": "application/x-amz-json-1.0",
+        "content-length": "2",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "ODMC6FKTVG0G85QD178AT7SP8NVV4KQNSO5AEMVJF66Q9ASUAAJG",
+        "x-amz-crc32": "2745614147"
+      },
+      "RetryAttempts": 0
+    }
+  }
+}
+```
+
+
+### API Call
+```javascript
+$.ajax({
+    url: "https://c56p384cll.execute-api.us-east-1.amazonaws.com/production/profile/general_profile",
+    dataType: "json",
+    type: "PUT",
+    data: JSON.stringify(profile_data),
+    cache: false,
+    success: function (response) {
+        // Handle the success response
+        console.log("API call successful:", response);
+    },
+    error: function (err) {
+        // Handle the error response
+        console.error("API call failed:", err);
+        alert("An error occurred while updating the profile.");
+    }
+});
+```
